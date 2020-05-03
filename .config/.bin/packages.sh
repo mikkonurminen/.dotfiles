@@ -21,4 +21,5 @@ sudo pacman -S --noconfirm ttf-jetbrains-mono \
 	ttf-font-awesome
 
 # pywal
-pip install pywal
+sudo pip install pywal
+

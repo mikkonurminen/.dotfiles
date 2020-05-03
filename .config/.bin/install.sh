@@ -8,14 +8,19 @@ sudo pacman -Syu --noconfirm
 echo "Installing other packages..."
 source packages.sh
 
+# i3blocks
+echo "Getting scripts for i3blocks"
+mkdir -p $HOME/.config/i3blocks
+git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
+
 # Zsh and Oh-my-zsh
-echo "Installing zsh and Oh-my-zsh..."
+echo "Installing Zsh and Oh-my-zsh..."
 
 echo "Getting Oh-my-zsh..."
 #sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 
-echo "Getting plugins..."
+echo "Getting Zsh plugins..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/>
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/>
 
