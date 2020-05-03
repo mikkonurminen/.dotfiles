@@ -8,22 +8,32 @@ sudo pacman -Syu --noconfirm
 echo "Installing other packages..."
 source packages.sh
 
-# Make zsh the default shell
-echo "Making zsh the default shell..."
-zsh
-chsh -s $(which zsh)
+# Zsh and Oh-my-zsh
+echo "Installing zsh and Oh-my-zsh..."
 
-# Oh-my-zsh
-echo "Installing Oh-my-zsh..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo "Getting Oh-my-zsh..."
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+
+echo "Getting plugins..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/>
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/>
+
+echo "Making zsh the default shell..."
+chsh -s $(which zsh)
 
 # Remove unnecessary shit
 echo "Cleaning unnecessary programs and stuff from HOME..."
 sudo pacman -R palemoon-bin moc
-rm -rf Public Music Videos Desktop Pictures Templates '.moonchild productions/' .moc
-rm .zshrc.pre-oh-my-zsh .bash_history .histfile
+rm -rf $HOME/Public \
+	$HOME/Music \
+	$HOME/Videos \
+	$HOME/Desktop \
+	$HOME/Pictures \
+	$HOME/Templates \
+	$HOME/'.moonchild productions/' \
+	$HOME/.moc
+#rm .zshrc.pre-oh-my-zsh .bash_history .histfile
 
 # Move config files to $XDG_CONFIG_HOME
 echo "Moving files to XDG_CONFIG_HOME..."
@@ -32,6 +42,7 @@ mkdir -p ~/.config/i3
 mv ~/.i3/config ~/.config/i3
 rm -rf .i3
 
+mkdir -p ~/.config/gtk-2.0
 mv ~/.gtkrc-2.0 ~/.config/gtk-2.0/gtkrc
 
 mkdir -p ~/.config/X11
@@ -41,26 +52,28 @@ mv ~/.xinitrc ~/.config/X11/xinitrc
 
 mv ~/.oh-my-zsh ~/.config/oh-my-zsh
 
+echo "Newsboat..."
 mkdir -p "$XDG_DATA_HOME"/newsboat "$XDG_CONFIG_HOME"/newsboat
 exec newsboat
 mv ~/.newsboat ~/.config/newsboat
 
-
 # Clone dotfiles using git bare repository
-git clone --bare https://github.com/mikkonurminen/dotfiles.git $HOME/.dotfiles
+git clone --bare --recursive https://github.com/mikkonurminen/.dotfiles \
+    "$HOME/.dotfiles"
 
-function dotgit {
- /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+function dotgit() {
+    /usr/bin/env git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" "$@"
 }
 
-dotgit config --local status.showUntrackedFiles no
-dotgit push --set-upstream origin master
+dotgit checkout
+if [ "$?" -ne 0 ]; then
+    mkdir -p "$HOME/.dotfiles-backup"
+    dotgit checkout 2>&1 \
+        | grep -P '^\s+[\w.]' \
+        | awk {'print $1'} \
+        | xargs -I{} sh -c 'cp -r --parents "{}" "$HOME/.dotfiles-backup/" && rm -rf "{}"'
+    dotgit checkout
+fi
 
-dotgit checkout &> /dev/null
-if ! [ $? = 0 ]; then
-  mkdir -p .dotfiles-backup
-  dotgit checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .dotfiles-backup/{}
-  echo "Backing up pre-existing dot files to ~/.dotfiles-backup/";
-  dotgit checkout
-  # the .bash_aliases is overwritten here with the dotgit alias already present
-fi;
+dotgit submodule update --recursive --remote
+dotgit config --local status.showUntrackedFiles no

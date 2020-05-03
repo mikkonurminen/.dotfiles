@@ -19,7 +19,6 @@ yay -S ttf-hack \
 	nerd-fonts-source-code-pro
 sudo pacman -S --noconfirm ttf-jetbrains-mono \
 	ttf-font-awesome
-fc-cahe -fv
 
 # pywal
 pip install pywal
