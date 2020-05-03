@@ -9,7 +9,7 @@ echo "Installing other packages..."
 source packages.sh
 
 # Make zsh the default shell
-echo "Making zsh the defauult shell..."
+echo "Making zsh the default shell..."
 zsh
 chsh -s $(which zsh)
 
