@@ -37,7 +37,7 @@ sudo pacman -R palemoon-bin moc
 rm -f .zshrc.pre-oh-my-zsh .bash_history .histfile
 
 dir="$HOME/Public $HOME/Music $HOME/Videos $HOME/Desktop $HOME/Pictures
-     $HOME/Templates $HOME/'.moonchild productions' $HOME/.moc"
+     $HOME/Templates $HOME/.moc $HOME/.mozilla $HOME/.gimp-2.8"
 
 for d in $dir
 do
@@ -46,6 +46,8 @@ do
       printf "$d deleted...\n"
   fi
 done
+
+rm -rf .moonchild\ productions/
 
 # Move config files to $XDG_CONFIG_HOME
 echo "Moving files to XDG_CONFIG_HOME..."
@@ -56,20 +58,20 @@ XDG_DATA_HOME="$HOME/.local/share"
 
 mkdir -p ~/.config/i3
 
-if [ -f "~/.i3/config" ]; then
+if [ -f ~/.i3/config ]; then
     mv ~/.i3/config ~/.config/i3
-    rm -rf .i3
+    rm -rf ~/.i3
     echo "Moved i3 config to $XDG_CONFIG_HOME/i3"
 fi 
 
 mkdir -p ~/.config/gtk-2.0
-if [ -f  "~/.gtkrc-2.0" ]; then
+if [ -f  ~/.gtkrc-2.0 ]; then
     mv ~/.gtkrc-2.0 ~/.config/gtk-2.0/gtkrc
     echo "Moved gtkrc-2.0 to $XDG_CONFIG_HOME/gtk-2.0"
 fi
 
 mkdir -p ~/.config/X11
-if [ -f "~/.xinitrc" ]; then
+if [ -f ~/.xinitrc ]; then
     mv ~/.xinitrc ~/.config/X11/xinitrc
     echo "Moved xinitrc to $XDG_CONFIG_HOME/X11"
 fi
@@ -77,14 +79,14 @@ fi
 #mv ~/.Xauthority ~/.config/X11/Xauthority
 #mv ~/.Xresources ~/.config/X11/Xresources
 
-if [ -d "~/.oh-my-zsh" ]; then
+if [ -d ~/.oh-my-zsh ]; then
     mv ~/.oh-my-zsh ~/.config/oh-my-zsh
     echo "Moved Oh-my-zsh to $XDG_CONFIG_HOME/oh-my-zsh"
 fi
 
-echo "Newsboat..."
+# Newsboat
 mkdir -p "$XDG_DATA_HOME"/newsboat "$XDG_CONFIG_HOME"/newsboat
-if [ -d "~/.newsboat" ]; then
+if [ -d ~/.newsboat ]; then
     mv ~/.newsboat ~/.config/newsboat
     echo "Moved newsboat to $XDG_CONFIG_HOME/newsboat"
 fi
@@ -112,3 +114,6 @@ if [ "$?" -ne 0 ]; then
 fi
 
 #dotgit submodule update --recursive --remote
+
+
+rm install.sh packages.sh
