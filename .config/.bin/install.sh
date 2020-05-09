@@ -22,10 +22,9 @@ git clone https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
 
 echo "Getting Zsh plugins..."
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \ 
-	${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions \ 
-	${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
+	~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 echo "Making zsh the default shell..."
 chsh -s $(which zsh)
