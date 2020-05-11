@@ -78,6 +78,12 @@ fi
 #mv ~/.Xauthority ~/.config/X11/Xauthority
 #mv ~/.Xresources ~/.config/X11/Xresources
 
+mkdir -p ~/.config/git
+if [ -f ~/.gitconfig ]; then
+    mv ~/.gitconfig ~/.config/git/config
+    echo "Moved gitconfig to $XDG_CONFIG_HOME/git"
+fi
+
 if [ -d ~/.oh-my-zsh ]; then
     mv ~/.oh-my-zsh ~/.config/oh-my-zsh
     echo "Moved Oh-my-zsh to $XDG_CONFIG_HOME/oh-my-zsh"
