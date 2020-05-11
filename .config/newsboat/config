@@ -1,0 +1,36 @@
+max-items 100
+download-timeout 20
+save-path "~/doc/saved-rss"
+download-path "~/doc/saved-rss"
+browser xdg-open
+download-filename-format "%F %n %t %t.%e"
+
+# Urlscan with newsboat
+external-url-viewer "urlscan -dc"
+bind-key U show-urls
+
+# Vim bindings
+unbind-key g
+unbind-key G
+
+bind-key j down
+bind-key k up
+bind-key j down feedlist
+bind-key k up feedlist
+bind-key j next articlelist
+bind-key k prev articlelist
+bind-key j down article
+bind-key k up article
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key g home
+bind-key G end
+bind-key d pagedown
+bind-key u pageup
+bind-key h quit
+bind-key l open
+
+# Colors
+color info color251 black bold
+#color listfocus yellow color32 bold
+#color listfocus_unread default color32 bold

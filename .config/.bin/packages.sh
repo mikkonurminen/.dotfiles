@@ -10,6 +10,7 @@ sudo pacman -Sy --noconfirm urxvt-perls \
 	neofetch \
 	brave \
 	newsboat \
+	urlscan
 
 # URxvt-perls
 yay -S urxvt-resize-font
