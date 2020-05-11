@@ -5,6 +5,10 @@ alias lsa="ls -a"
 alias lsla="ls -la"
 alias home="cd ~"
 
+alias mkdir="mkdir -p"
+alias mv="mv -i"
+alias rm="rm -i"
+
 alias srczsh="source ~/.zshrc"
 alias dot="cd ~/.dotfiles"
 
