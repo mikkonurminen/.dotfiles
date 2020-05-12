@@ -6,10 +6,12 @@ sudo pacman -Sy --noconfirm urxvt-perls \
 	lm_sensors \
 	zsh \
 	feh \
+	sxiv \
 	imagemagick \
 	neofetch \
 	brave \
 	newsboat \
+	thunar \
 	urlscan
 
 # URxvt-perls
