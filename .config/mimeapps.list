@@ -11,14 +11,13 @@ application/xhtml+xml=brave.desktop
 application/x-extension-xhtml=brave.desktop
 application/x-extension-xht=brave.desktop
 
-# Images
 image/jpeg=sxiv.desktop;feh.desktop;
 image/png=sxiv.desktop;feh.desktop;
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop
 
 text/plain=mousepad.desktop
 x-scheme-handler/mailto=userapp-Thunderbird.desktop
 message/rfc822=userapp-Thunderbird.desktop
-application/pdf=epdfview.desktop
 application/x-bittorrent=deluge.desktop
 
 [Added Associations]
@@ -38,5 +37,5 @@ image/png=sxiv.desktop;feh.desktop;
 text/plain=mousepad.desktop;
 x-scheme-handler/mailto=userapp-Thunderbird.desktop;
 message/rfc822=userapp-Thunderbird.desktop;
-application/pdf=epdfview.desktop;
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
 application/x-bittorrent=deluge.desktop;

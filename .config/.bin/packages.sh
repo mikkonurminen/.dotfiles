@@ -9,13 +9,18 @@ sudo pacman -Sy --noconfirm urxvt-perls \
 	sxiv \
 	imagemagick \
 	neofetch \
+	unzip \
 	brave \
+	zathura \
 	newsboat \
 	thunar \
 	urlscan
 
 # URxvt-perls
 yay -S urxvt-resize-font
+
+# Tabbed
+yay -S tabbed
 
 # Install fonts
 yay -S ttf-hack \
@@ -26,3 +31,9 @@ sudo pacman -S --noconfirm ttf-jetbrains-mono \
 # pywal
 sudo pip install pywal
 
+# xcwd
+git clone https://github.com/schischi/xcwd.git
+cd xcwd
+sudo make install 
+cd .. 
+rm -rf xwcd

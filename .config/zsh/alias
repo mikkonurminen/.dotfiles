@@ -1,15 +1,15 @@
-alias ..="cd .."
-alias ...="cd ../.."
+alias ..="cd .." alias ...="cd ../.."
 
-alias lsa="ls -a"
-alias lsla="ls -la"
-alias home="cd ~"
+alias lsa="ls -a" alias lsla="ls -la" alias home="cd ~"
 
-alias mkdir="mkdir -p"
-alias mv="mv -i"
-alias rm="rm -i"
+alias mkdir="mkdir -p" alias mv="mv -i" alias rm="rm -i"
 
-alias srczsh="source ~/.zshrc"
-alias dot="cd ~/.dotfiles"
+alias srczsh="source ~/.zshrc" alias dot="cd ~/.dotfiles"
 
 alias dotgit="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+function tabbed_zathura {
+	tabbed -c zathura -e
+}
+
+bindkey -s "^[^Z" "^Qtabbed -c zathura -e^M"
