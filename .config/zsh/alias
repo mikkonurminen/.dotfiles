@@ -8,8 +8,10 @@ alias srczsh="source ~/.zshrc" alias dot="cd ~/.dotfiles"
 
 alias dotgit="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
-function tabbed_zathura {
-	tabbed -c zathura -e
+tabbed-zathura() {
+  tabbed -c zathura -e
+  zle reset-prompt
 }
 
-bindkey -s "^[^Z" "^Qtabbed -c zathura -e^M"
+zle -N tabbed-zathura
+bindkey  "^[^Z" tabbed-zathura
