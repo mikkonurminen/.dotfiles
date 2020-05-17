@@ -2,7 +2,7 @@
 x-scheme-handler/http=brave.desktop
 x-scheme-handler/https=brave.desktop
 x-scheme-handler/ftp=brave.desktop
-x-scheme-handler/chrome=brave.desktop
+#x-scheme-handler/chrome=brave.desktop
 text/html=brave.desktop
 application/x-extension-htm=brave.desktop
 application/x-extension-html=brave.desktop
@@ -10,11 +10,9 @@ application/x-extension-shtml=brave.desktop
 application/xhtml+xml=brave.desktop
 application/x-extension-xhtml=brave.desktop
 application/x-extension-xht=brave.desktop
-
 image/jpeg=sxiv.desktop;feh.desktop;
 image/png=sxiv.desktop;feh.desktop;
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop
-
 text/plain=mousepad.desktop
 x-scheme-handler/mailto=userapp-Thunderbird.desktop
 message/rfc822=userapp-Thunderbird.desktop
@@ -24,7 +22,7 @@ application/x-bittorrent=deluge.desktop
 x-scheme-handler/http=brave.desktop;
 x-scheme-handler/https=brave.desktop;
 x-scheme-handler/ftp=brave.desktop;
-x-scheme-handler/chrome=brave.desktop;
+#x-scheme-handler/chrome=brave.desktop;
 text/html=brave.desktop;
 application/x-extension-htm=brave.desktop;
 application/x-extension-html=brave.desktop;
@@ -35,7 +33,7 @@ application/x-extension-xht=brave.desktop;
 image/jpeg=sxiv.desktop;feh.desktop;
 image/png=sxiv.desktop;feh.desktop;
 text/plain=mousepad.desktop;
-x-scheme-handler/mailto=userapp-Thunderbird.desktop;
 message/rfc822=userapp-Thunderbird.desktop;
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop;
 application/x-bittorrent=deluge.desktop;
+
