@@ -29,11 +29,13 @@ git clone https://github.com/zsh-users/zsh-autosuggestions \
 echo "Making zsh the default shell..."
 chsh -s $(which zsh)
 
+mkdir -p ~/.cache/zsh
+
 # Remove unnecessary shit
 echo "Cleaning unnecessary programs and stuff from HOME..."
 sudo pacman -R palemoon-bin moc
 
-rm -f .zshrc.pre-oh-my-zsh .bash_history .histfile
+rm -f .zshrc.pre-oh-my-zsh .bash_history .histfile .zsh_history
 
 dir="$HOME/Public $HOME/Music $HOME/Videos $HOME/Desktop $HOME/Pictures
      $HOME/Templates $HOME/.moc $HOME/.mozilla $HOME/.gimp-2.8"
@@ -87,6 +89,10 @@ fi
 if [ -d ~/.oh-my-zsh ]; then
     mv ~/.oh-my-zsh ~/.config/oh-my-zsh
     echo "Moved Oh-my-zsh to $XDG_CONFIG_HOME/oh-my-zsh"
+fi
+
+if [ -f ~/.zsh_history ]; then
+   rm -f ~/.zsh_history
 fi
 
 # Newsboat
