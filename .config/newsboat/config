@@ -1,5 +1,6 @@
 max-items 100
 download-timeout 20
+text-width 80
 save-path "~/doc/saved-rss"
 download-path "~/doc/saved-rss"
 browser xdg-open
