@@ -13,11 +13,3 @@ alias srczsh="source ~/.zshrc"
 alias dot="cd ~/.dotfiles"
 
 alias dotgit="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-
-tabbed-zathura() {
-  tabbed -c zathura -e
-  zle reset-prompt
-}
-
-zle -N tabbed-zathura
-bindkey  "^[^Z" tabbed-zathura

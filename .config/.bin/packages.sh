@@ -14,7 +14,8 @@ sudo pacman -Sy --noconfirm urxvt-perls \
 	zathura \
 	newsboat \
 	thunar \
-	urlscan
+	urlscan \
+	fd
 
 # URxvt-perls
 yay -S urxvt-resize-font

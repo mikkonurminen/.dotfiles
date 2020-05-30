@@ -5,7 +5,7 @@
 source $HOME/.config/zsh/exports
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mikko/.config/oh-my-zsh"
+export ZSH="$HOME/.config/oh-my-zsh"
 
 ZSH_THEME="avit"
 
@@ -29,13 +29,16 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+_comp_options+=(globdots)
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Aliases
+# Aliases and scripts
+source $HOME/.config/zsh/scripts
 source $HOME/.config/zsh/alias
 
 # Vim mode
@@ -75,5 +78,16 @@ echo -ne '\e[6 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[6 q' ;} # Use beam shape cursor for each new prompt.
 
 bindkey '^[[3~' delete-char
+
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
+bindkey '^R' fzf-history-widget
+bindkey '^T' fzf-file-widget
+bindkey '\ec' fzf-cd-widget
+bindkey '^F' cd_with_fzf
+bindkey '^O' open_with_fzf
+
+bindkey  "^[^Z" tabbed-zathura
 
 bindkey '^ ' autosuggest-accept

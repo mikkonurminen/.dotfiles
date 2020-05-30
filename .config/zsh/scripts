@@ -1,0 +1,25 @@
+# Zsh scripts
+
+# Open zathura with tabs
+tabbed-zathura() {
+  tabbed -c zathura -e
+  zle reset-prompt
+}
+zle -N tabbed-zathura
+
+# Open file using fzf
+open_with_fzf() {
+    fd -t f -H -I | fzf -m --preview="xdg-mime query default {}" | xargs -ro -d "\n" xdg-open 2>&-
+}
+zle -N open_with_fzf
+
+# Change directory with fzf and show preview. Dependent on package "fd"
+cd_with_fzf() {
+    cd $HOME && cd "$(fd -t d | fzf --preview="tree -L 1 {}" --bind="space:toggle-preview" --preview-window=:hidden)"
+}
+zle -N cd_with_fzf
+
+# Use fzf in pacman and show previews in pacman
+pacs() {
+    sudo pacman -Syy $(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview)
+}
