@@ -13,3 +13,7 @@ alias srczsh="source ~/.zshrc"
 alias dot="cd ~/.dotfiles"
 
 alias dotgit="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+alias v="nvim"
+alias vi="nvim"
+alias vim="nvim"
