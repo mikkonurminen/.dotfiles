@@ -17,6 +17,8 @@ sudo pacman -Sy --noconfirm urxvt-perls \
 	urlscan \
 	fd \
 	neovim
+  nodejs \
+  npm
 
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -35,7 +37,7 @@ sudo pacman -S --noconfirm ttf-jetbrains-mono \
 	ttf-font-awesome
 
 # pywal
-sudo pip install pywal
+sudo pip install pywal jedi pylint pynvim jupyter
 
 # xcwd
 git clone https://github.com/schischi/xcwd.git
