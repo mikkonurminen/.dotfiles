@@ -38,6 +38,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'bfredl/nvim-ipy'
 "Plug 'Chiel92/vim-autoformat'
 call plug#end()
+" CoCplugs: coc-prettier, coc-pairs, coc-tsserver, coc-python, coc-json,
+" -coc-html, coc-css
 
 " Color scheme
 "set termguicolors          " True colors
